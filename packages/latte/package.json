@@ -1,0 +1,45 @@
+{
+    "name": "@caoua/latte",
+    "author": "Franck",
+    "version": "0.0.0",
+    "description": "Components for Caoua DS",
+    "license": "Apache-2.0",
+    "publishConfig": {
+        "access": "public",
+        "provenance": true
+    },
+    "type": "module",
+    "sideEffects": [
+        "*.css"
+    ],
+    "exports": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "/dist",
+        "CHANGELOG.md",
+        "README.md"
+    ],
+    "scripts": {
+        "build": "tsup --config ./tsup.build.ts"
+    },
+    "peerDependencies": {
+        "react": "*"
+    },
+    "devDependencies": {
+        "@types/react": "18.2.8",
+        "@workleap/eslint-plugin": "3.0.0",
+        "@workleap/postcss-configs": "^1.0.1",
+        "@workleap/typescript-configs": "3.0.2",
+        "classnames": "^2.3.2",
+        "postcss": "^8.4.31",
+        "react": "18.2.0",
+        "typescript": "5.0.3"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "dependencies": {
+        "@workleap/tsup-configs": "^3.0.1",
+        "tsup": "^7.1.0"
+    }
+}
