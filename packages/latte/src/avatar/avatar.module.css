@@ -1,0 +1,28 @@
+.hop-avatar {
+    display: inline-block;
+    line-height: 0;
+    aspect-ratio: 1/1;
+    border-radius: 999px;
+    width: 32px;
+    overflow: hidden;
+}
+
+.hop-avatar > img {
+    width: inherit;
+}
+
+.hop-avatar--xSmall {
+    width: 16px;
+}
+
+.hop-avatar--small {
+    width: 24px;
+}
+
+.hop-avatar--large {
+    width: 48px;
+}
+
+.hop-avatar--xLarge {
+    width: 64px;
+}

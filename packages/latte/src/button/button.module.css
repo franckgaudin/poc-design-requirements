@@ -1,0 +1,42 @@
+@import url('@hopper-ui/tokens/tokens.css');
+
+.hop-btn {
+    /* TODO: add correct components name fot tokens */
+    --hop-button-background: var(--hop-primary-surface-strong);
+    --hop-button-frontground: var(--hop-primary-text-strong);
+
+    appearance: none;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    color: var(--hop-button-frontground);
+    background-color: var(--hop-button-background);
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+}
+
+.hop-btn:hover,
+.hop-btn:focus {
+    cursor: pointer;
+    background-color: var(--hop-primary-surface-hover);
+}
+
+.hop-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 0.12rem var(--hop-neutral-surface), 0 0 0 0.219rem var(--hop-primary-border-focus);
+}
+
+.hop-btn--disabled,
+.hop-btn--disabled:hover {
+    color: var(--hop-neutral-text-disabled);
+    background-color: var(--hop-neutral-surface-disabled);
+    cursor: not-allowed;
+}
+
+.hop-btn--disabled:focus,
+.hop-btn--disabled:focus-visible {
+    box-shadow: none;
+}

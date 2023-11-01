@@ -4,6 +4,6 @@ export default defineConfig({
     presetEnvOptions: {
         ...DefaultPresetEnvOptions,
         browsers: "> .5% and last 2 versions",
-        debug: true
+        debug: true,
     }
 });
