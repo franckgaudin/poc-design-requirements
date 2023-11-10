@@ -1,28 +1,98 @@
-.hop-avatar {
-    display: inline-block;
-    line-height: 0;
-    aspect-ratio: 1/1;
-    border-radius: 999px;
-    width: 32px;
-    overflow: hidden;
+:root {
+    /* les tokens doivent être déclarer plutôt qu'écraser pour avoir des components tokens */
+    /* {namespace}-{component-name}--{variation}-{sub-component}-{attribute}-{state} */
+    --hop-avatar-aspect-ratio: 1/1;
+    --hop-avatar-border-radius: var(--hop-shape-circle);
+    --hop-avatar-width: 2rem;
+    --hop-avatar-font-family: var(--hop-body-md-font-family);
+    --hop-avatar-font-weight: var(--hop-body-md-font-weight);
+    --hop-avatar-font-size: var(--hop-body-md-font-size);
+    --hop-avatar-color: rgb(60 60 60 / 85%);
+    --hop-avatar-background-color: var(--hop-decorative-option1-surface-strong);
+    /* Sizes */
+    --hop-avatar--xs-font-size: var(--hop-body-xs-font-size);
+    --hop-avatar--sm-font-size: var(--hop-body-xs-font-size);
+    --hop-avatar--lg-font-size: var(--hop-body-lg-font-size);
+    --hop-avatar--xl-font-size: var(--hop-body-xl-font-size);
+    --hop-avatar--xs-width: 1rem;
+    --hop-avatar--sm-width: 1.5rem;
+    --hop-avatar--lg-width: 3rem;
+    --hop-avatar--xl-width: 4rem;
+    /* Colors */
+    --hop-avatar--quetzal-background-color: var(--hop-decorative-option2-surface-strong);
+    --hop-avatar--koi-background-color: var(--hop-decorative-option3-surface);
+    --hop-avatar--moss-background-color: var(--hop-decorative-option4-surface-strong);
+    --hop-avatar--coastal-background-color: var(--hop-decorative-option5-surface-strong);
+    --hop-avatar--sunken-background-color: var(--hop-decorative-option6-surface-strong);
+    --hop-avatar--toad-background-color: var(--hop-decorative-option7-surface-strong);
+    --hop-avatar--manita-background-color: var(--hop-decorative-option8-surface-strong);
 }
 
-.hop-avatar > img {
+
+.hop-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: var(--hop-avatar-aspect-ratio);
+    border-radius: var(--hop-avatar-border-radius);
+    width: var(--hop-avatar-width);
+    font-family: var(--hop-avatar-font-family);
+    font-weight: var(--hop-avatar-font-weight);
+    font-size: var(--hop-avatar-font-size);
+    color: var(--hop-avatar-color);
+    background-color: var(--hop-avatar-background-color);
+}
+
+.hop-avatar__img {
     width: inherit;
+    border-radius: var(--hop-avatar-border-radius);
 }
 
 .hop-avatar--xSmall {
-    width: 16px;
+    font-size: var(--hop-avatar--xs-font-size);
+    width: var(--hop-avatar--xs-width);
 }
 
 .hop-avatar--small {
-    width: 24px;
+    font-size: var(--hop-avatar--sm-font-size);
+    width: var(--hop-avatar--sm-width);
 }
 
 .hop-avatar--large {
-    width: 48px;
+    font-size: var(--hop-avatar--lg-font-size);
+    width: var(--hop-avatar--lg-width);
 }
 
 .hop-avatar--xLarge {
-    width: 64px;
+    font-size: var(--hop-avatar--xl-font-size);
+    width: var(--hop-avatar--xl-width);
 }
+
+.hop-avatar--quetzal {
+    background-color: var(--hop-avatar--quetzal-background-color);
+}
+
+.hop-avatar--koi {
+    background-color: var(--hop-avatar--koi-background-color);
+}
+
+.hop-avatar--moss {
+    background-color: var(--hop-avatar--moss-background-color);
+}
+
+.hop-avatar--coastal {
+    background-color: var(--hop-avatar--coastal-background-color);
+}
+
+.hop-avatar--sunken {
+    background-color: var(--hop-avatar--sunken-background-color);
+}
+
+.hop-avatar--toad {
+    background-color: var(--hop-avatar--toad-background-color);
+}
+
+.hop-avatar--amanita {
+    background-color: var(--hop-avatar--manita-background-color);
+}
+

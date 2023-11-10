@@ -1,42 +1,44 @@
 import {
     Tabs as AriaTabs,
-    TabList,
-    Tab,
-    TabPanel,
-    TabsProps as AriaTabsProps,
-} from 'react-aria-components';
+    TabList as AriaTabList,
+    Tab as AriaTab,
+    TabPanel as AriaTabPanel,
+    type TabListProps as AriaTabListProps,
+    type TabPanelProps as AriaTabPanelProps,
+    type TabProps as AriaTabProps
+} from "react-aria-components";
+import cx from "classnames";
 
-import styles from "./tabs.module.css";
+import styles from "./Tabs.module.css";
 
-interface ItemProps {
-    id: string;
-    label: string;
-    children: string;
-}
+type TabListProps = AriaTabListProps<React.PropsWithChildren>;
+type TabProps = AriaTabProps;
+type TabPanelProps = AriaTabPanelProps;
 
-interface TabsProps extends AriaTabsProps {
-    tabs: ItemProps[];
-}
 
-const Tabs = ({ tabs }: TabsProps ) => {
+const TabPanel = ({ ...props }: TabPanelProps) => {
+    return <AriaTabPanel className={cx(styles["hop-tabs__panel"])} {...props} />;
+};
 
-    const tablist = tabs.map((tab) => {
-           return <Tab className={styles["hop-tab"]} id={tab.id}>{tab.label}</Tab>
-    });
+const Tab = ({ ...props }: TabProps) => {
+    return <AriaTab className={cx(styles["hop-tab"])} {...props} />;
+};
 
-    const tabPanel = tabs.map((tab) => {
-        return <TabPanel className={styles["hop-tabs__panel"]} id={tab.id}>{tab.children}</TabPanel>
-    });
+const TabList = ({ ...props }: TabListProps) => {
+    return <AriaTabList className={cx(styles["hop-tabs__list"])} {...props} />;
+};
 
-    return (
-        <AriaTabs className={styles["hop-tabs"]}>
-            <TabList className={styles["hop-tabs__list"]}>
-                {tablist}
-            </TabList>
-
-            {tabPanel}
-        </AriaTabs>
+const TabsRoot = ({ type, ...props }: { type?: "standard" | "card" | "heading"; children: React.ReactNode }) => {
+    const classes = cx(
+        styles["hop-tabs"],
+        {
+            [styles[`hop-tabs--${type}`]]: type !== "standard"
+        }
     );
-}
 
-export default Tabs
+    return <AriaTabs className={classes} {...props} />;
+};
+
+const Tabs = Object.assign(TabsRoot, { Root: TabsRoot, TabList, Tab, TabPanel });
+
+export default Tabs;

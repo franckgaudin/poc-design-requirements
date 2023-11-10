@@ -1,30 +1,50 @@
-import styles from "./avatar.module.css";
+import React from "react";
 import cx from "classnames";
 
-export type Size = 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge';
+import styles from "./Avatar.module.css";
 
-interface AvatarProps {
+export type Size = "xSmall" | "small" | "medium" | "large" | "xLarge";
+export type Color = "sapphire" | "quetzal" | "koi" | "moss" | "coastal" | "sunken" | "toad" | "amanita";
+
+interface AvatarProps extends React.HTMLAttributes<HTMLSpanElement> {
     size?: Size;
+    color?: Color;
+    className?: string;
+}
+
+interface AvatarImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
     className?: string;
     src: string;
     alt?: string;
 }
 
-const Avatar = ({ src, alt, size = "medium", className}: AvatarProps) => {
+const AvatarImage = ({ className, ...props }: AvatarImageProps): React.ReactNode => {
+    const classes = cx(styles["hop-avatar__img"], className);
 
+    return (
+        <img className={classes} alt={props.alt} {...props} />
+    );
+};
+
+const AvatarInitials = ({ children } : React.PropsWithChildren): React.ReactNode => {
+    return <>{children}</>;
+};
+
+const AvatarRoot = ({ className, size = "medium", color = "sapphire", ...props }: AvatarProps) => {
     const classes = cx(
-        styles['hop-avatar'],
+        styles["hop-avatar"],
         {
-            [styles[`hop-avatar--${size}`]]: size !== 'medium',
+            [styles[`hop-avatar--${size}`]]: size !== "medium",
+            [styles[`hop-avatar--${color}`]]: color !== "sapphire"
         },
         className
     );
 
     return (
-        <span className={classes}>
-            <img className={styles["hop-avatar__img"]} src={src} alt={alt}/>
-        </span>
+        <span className={classes} {...props} />
     );
-}
+};
 
-export default Avatar
+const Avatar = Object.assign(AvatarRoot, { Root: AvatarRoot, Image: AvatarImage, Initials: AvatarInitials });
+
+export default Avatar;

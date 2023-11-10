@@ -1,28 +1,24 @@
 import Tabs from "./Tabs.tsx";
 
 export default {
-    title: "Components/Tabs",
+    title: "Components/Tabs custom",
     component: Tabs
 };
 
 export const StandAlone = {
-    args: {
-        tabs: [
-            {
-                id: "hop-tab-1",
-                label: "Founding of Rome",
-                children: "Arma virumque cano, Troiae qui primus ab oris."
-            },
-            {
-                id: "hop-tab-2",
-                label: "Monarchy and Republic",
-                children: "Senatus Populusque Romanus."
-            },
-            {
-                id: "hop-tab-3",
-                label: "Empire",
-                children: "Alea jacta est."
-            }
-        ],
+    // test
+    render: () => {
+        return (
+            <Tabs>
+                <Tabs.TabList>
+                    <Tabs.Tab id="founding">Founding of Rome</Tabs.Tab>
+                    <Tabs.Tab id="monarchy">Monarchy and Republic</Tabs.Tab>
+                    <Tabs.Tab id="Empire"> Empire</Tabs.Tab>
+                </Tabs.TabList>
+                <Tabs.TabPanel id="founding">Arma virumque cano, Troiae qui primus ab oris.</Tabs.TabPanel>
+                <Tabs.TabPanel id="monarchy">Senatus Populusque Romanus.</Tabs.TabPanel>
+                <Tabs.TabPanel id="Empire">Alea jacta est.</Tabs.TabPanel>
+            </Tabs>
+        );
     }
 };

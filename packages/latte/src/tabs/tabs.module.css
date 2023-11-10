@@ -1,23 +1,55 @@
+:root {
+    --hop-tabs-font-family: var(--hop-body-sm-font-family);
+    --hop-tabs-font-weight: var(--hop-body-sm-font-weight);
+    --hop-tabs-font-size: var(--hop-body-sm-font-size);
+    --hop-tabs-color: var(--hop-neutral-text-weak);
+    --hop-tabs-height: 3rem;
+    --hop-tabs-padding-inline: var(--hop-space-inset-md);
+    --hop-tabs-border: 1px solid var(--hop-neutral-border-weak);
+    --hop-tabs-border-radius: var(--hop-shape-rounded-md);
+    --hop-tabs-background-color: var(--hop-neutral-surface-weakest);
+
+    /* State */
+    --hop-tabs-focus: 0 0 0 0.12rem var(--hop-neutral-surface), 0 0 0 0.219rem var(--hop-primary-border-focus);
+    --hop-tabs-focus-inset: 0.75rem 0.875rem;
+    --hop-tabs-active-color: var(--hop-neutral-text);
+    --hop-tabs-focus-border-radius: var(--hop-shape-rounded-sm);
+    --hop-tabs-active-border-width: 2px;
+    --hop-tabs-active-border: var(--hop-tabs-active-border-width) solid var(--hop-neutral-border-active);
+    --hop-tabs-active-inset: calc(100% - var(--hop-tabs-active-border-width)) var(--hop-tabs-padding-inline) 0 var(--hop-tabs-padding-inline);
+
+    /* Variantes */
+    --hop-tabs--heading-font-size: var(--hop-body-md-font-family);
+    --hop-tabs--heading-height: 2.75rem;
+    --hop-tabs--heading-border: none;
+    --hop-tabs--heading-background-color: transparent;
+    --hop-tabs--heading-padding: var(--hop-space-inset-sm);
+    --hop-tabs--heading-inset: 0.5rem 0.375rem;
+    --hop-tabs--heading-focus-inset: calc(100% - var(--hop-tabs-active-border-width)) 0.375rem 0 0.375rem;
+}
+
 .hop-tabs {
     display: inline-block;
-    font-family: "Inter", sans-serif;
-    font-size: 14px;
-    color: #3C3C3C;
-    font-weight: 505;
+    font-family: var(--hop-tabs-font-family);
+    font-size: var(--hop-tabs-font-size);
+    font-weight: var(--hop-tabs-font-weight);
+    color: var(--hop-tabs-color);
 }
 
 .hop-tabs__list {
     display: flex;
-    border: 1px solid #E0DFDD;
-    background-color: #F8F6F3;
-    border-radius: 8px;
-    height: 48px;
+    border: 1px solid var(--hop-tabs-border);
+    background-color: var(--hop-tabs-background-color);
+    border-radius: var(--hop-tabs-border-radius);
+    height: var(--hop-tabs-height);
     box-sizing: border-box;
 }
 
 .hop-tab {
     position: relative;
-    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    padding-inline: var(--hop-tabs-padding-inline);
 }
 
 .hop-tab:hover {
@@ -28,23 +60,52 @@
     outline: none;
 }
 
-.hop-tab[data-focus-visible]:before {
+.hop-tab[data-focus-visible]::before {
     content: '';
     position: absolute;
     display: block;
-    border-radius: 4px;
-    inset: 12px 14px;
-    box-shadow: 0 0 0 0.12rem var(--hop-neutral-surface), 0 0 0 0.219rem var(--hop-primary-border-focus);
+    border-radius: var(--hop-tabs-focus-border-radius);
+    inset: var(--hop-tabs-focus-inset);
+    box-shadow: var(--hop-tabs-focus);
 }
 
-.hop-tab[data-selected="true"]:after {
+.hop-tab[data-selected="true"]{
+    color: var(--hop-tabs-active-color)
+}
+
+.hop-tab[data-selected="true"]::after {
     content: '';
     display: block;
     position: absolute;
-    inset: calc(100% - 2px) 16px 0 16px;
-    border-top-style: solid;
-    border-top-color: #3C3C3C;
-    border-top-width: 2px;
+    inset: var(--hop-tabs-active-inset);
+    border-top: var(--hop-tabs-active-border)
+}
+
+.hop-tabs__list--card {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.hop-tabs__list--heading {
+    background: var(--hop-tabs--heading-background-color);
+    border: var(--hop-tabs--heading-border);
+    height: var(--hop-tabs--heading-height);
+}
+
+.hop-tabs:has(.hop-tabs__list--heading) {
+    font-size: var(--hop-tabs--heading-font-size);
+}
+
+.hop-tabs__list--heading .hop-tab {
+    padding: var(--hop-tabs--heading-padding);
+}
+
+.hop-tabs__list--heading .hop-tab[data-focus-visible]::before {
+    inset: var(--hop-tabs--heading-inset);
+}
+
+.hop-tabs__list--heading .hop-tab[data-selected="true"]::after {
+    inset: var(--hop-tabs--heading-focus-inset);
 }
 
 .hop-tabs__panel {

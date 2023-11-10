@@ -1,39 +1,96 @@
-@import url('@hopper-ui/tokens/tokens.css');
+:root {
+    /* {namespace}-{component-name}--{variation}-{sub-component}-{attribute}-{state} */
+    --hop-button-background-color: var(--hop-primary-surface-strong);
+    --hop-button-background-color-hover: var(--hop-primary-surface-hover);
+    --hop-button-color: var(--hop-primary-text-strong);
+    --hop-button-font-family: var(--hop-body-md-font-family);
+    --hop-button-font-weight: var(--hop-body-md-font-weight);
+    --hop-button-font-size: var(--hop-body-md-font-size);
+    --hop-button-border-radius: var(--hop-shape-rounded-sm);
+    --hop-button-border-color: transparent;
+    --hop-button-border: 1px solid var(--hop-button-border-color);
+    --hop-button-padding: var(--hop-space-inset-squish-md);
+    --hop-button-height: 2.5rem;
+    --hop-button-focus: 0 0 0 0.12rem var(--hop-neutral-surface), 0 0 0 0.219rem var(--hop-primary-border-focus);
+
+    /* Secondary */
+    --hop-button--secondary-color: var(--hop-neutral-text);
+    --hop-button--secondary-background-color: var(--hop-neutral-surface);
+    --hop-button--secondary-border-color: var(--hop-neutral-border-strong);
+    --hop-button--secondary-color-hover: var(--hop-neutral-text-hover);
+    --hop-button--secondary-background-color-hover: var(--hop-neutral-surface-hover);
+    --hop-button--secondary-border-color-hover: var(--hop-neutral-border-strong-hover);
+
+    /* Small */
+    --hop-button--small-font-size: var(--hop-body-sm-font-size);
+    --hop-button--small-height: 2rem;
+    --hop-button--small-padding-block: 0.375rem;
+
+    /* Disabled */
+    --hop-button--disabled-color: var(--hop-neutral-text-disabled);
+    --hop-button--disabled-background-color: var(--hop-neutral-surface-disabled);
+    --hop-button--disabled-border-color: transparent;
+}
 
 .hop-btn {
-    /* TODO: add correct components name fot tokens */
-    --hop-button-background: var(--hop-primary-surface-strong);
-    --hop-button-frontground: var(--hop-primary-text-strong);
-
     appearance: none;
-    font-size: 16px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 40px;
-    color: var(--hop-button-frontground);
-    background-color: var(--hop-button-background);
-    padding: 8px 16px;
-    border-radius: 4px;
-    border: none;
+    height: var(--hop-button-height);
+    padding: var(--hop-button-padding);
+    color: var(--hop-button-color);
+    font-size: var(--hop-button-font-size);
+    font-family: var(--hop-button-font-family);
+    font-weight: var(--hop-button-font-weight);
+    background-color: var(--hop-button-background-color);
+    border-radius: var(--hop-button-border-radius);
+    border: var(--hop-button-border);
+    box-sizing: border-box;
+}
+
+/* .hop-btn--secondary { */
+/*    --hop-button-color: var(--hop-button--secondary-color); */
+/*    --hop-button-background-color: var(--hop-button--secondary-background-color); */
+/*    --hop-button-border-color: var(--hop-button--secondary-border-color); */
+/* } */
+
+.hop-btn--secondary {
+    color: var(--hop-button--secondary-color);
+    background-color: var(--hop-button--secondary-background-color);
+    border-color: var(--hop-button--secondary-border-color);
+}
+
+.hop-btn--small {
+    font-size: var(--hop-button--small-font-size);
+    height: var(--hop-button--small-height);
+    padding-block: var(--hop-button--small-padding-block);
 }
 
 .hop-btn:hover,
-.hop-btn:focus {
+.hop-btn:not(.hop-btn--disabled):focus {
     cursor: pointer;
-    background-color: var(--hop-primary-surface-hover);
+    background-color: var(--hop-button-background-color-hover);
+}
+
+.hop-btn--secondary:hover,
+.hop-btn--secondary:not(.hop-btn--disabled):focus{
+    background-color: var(--hop-button--secondary-background-color-hover);
+    color: var(--hop-button--secondary-color-hover);
+    border-color: var(--hop-button--secondary-border-color-hover);
 }
 
 .hop-btn:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 0.12rem var(--hop-neutral-surface), 0 0 0 0.219rem var(--hop-primary-border-focus);
+    box-shadow: var(--hop-button-focus);
 }
 
 .hop-btn--disabled,
 .hop-btn--disabled:hover {
-    color: var(--hop-neutral-text-disabled);
-    background-color: var(--hop-neutral-surface-disabled);
     cursor: not-allowed;
+    color: var(--hop-button--disabled-color);
+    background-color: var(--hop-button--disabled-background-color);
+    border-color: var(--hop-button--disabled-border-color);
 }
 
 .hop-btn--disabled:focus,
