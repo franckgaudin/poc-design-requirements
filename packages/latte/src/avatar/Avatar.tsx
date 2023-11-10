@@ -45,6 +45,6 @@ const AvatarRoot = ({ className, size = "medium", color = "sapphire", ...props }
     );
 };
 
-const Avatar = Object.assign(AvatarRoot, { Root: AvatarRoot, Image: AvatarImage, Initials: AvatarInitials });
+export const Avatar = Object.assign(AvatarRoot, { Root: AvatarRoot, Image: AvatarImage, Initials: AvatarInitials });
 
-export default Avatar;
+

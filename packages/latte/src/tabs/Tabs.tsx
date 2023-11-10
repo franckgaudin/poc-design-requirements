@@ -39,6 +39,5 @@ const TabsRoot = ({ type, ...props }: { type?: "standard" | "card" | "heading"; 
     return <AriaTabs className={classes} {...props} />;
 };
 
-const Tabs = Object.assign(TabsRoot, { Root: TabsRoot, TabList, Tab, TabPanel });
+export const Tabs = Object.assign(TabsRoot, { Root: TabsRoot, TabList, Tab, TabPanel });
 
-export default Tabs;

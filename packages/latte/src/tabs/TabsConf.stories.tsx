@@ -1,4 +1,4 @@
-import TabsConf from "./TabsConf.tsx";
+import {TabsConf} from "./TabsConf.tsx";
 
 export default {
     title: "Components/Tabs config",

@@ -1,5 +1,9 @@
+"use client"
+
 import Link from "next/link";
 import Title from "@/components/ui/title/Title";
+
+import { Button } from "@caoua/latte";
 
 export default function PlaygroundPage() {
     return (
@@ -13,6 +17,7 @@ export default function PlaygroundPage() {
                     <Link href="/playground/headings-link">Heading link →</Link>
                 </li>
             </ul>
+            <Button>Click me!</Button>
         </main>
     );
 }

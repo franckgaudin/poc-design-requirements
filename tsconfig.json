@@ -1,0 +1,10 @@
+{
+    "extends": "@workleap/typescript-configs/monorepo-workspace",
+    "exclude": ["**/dist/**", "node_modules"],
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@caoua/latte": ["./packages/latte/src/index.ts"],
+        },
+    }
+}

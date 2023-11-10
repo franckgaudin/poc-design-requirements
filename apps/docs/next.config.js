@@ -1,4 +1,5 @@
 const { withContentlayer } = require("next-contentlayer");
+const path = require("path");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -21,6 +22,10 @@ const nextConfig = {
             test: /\.svg$/i,
             use: ["@svgr/webpack"]
         });
+
+        config.resolve.alias = {
+            ...config.resolve.alias
+        }
 
         return config;
     }

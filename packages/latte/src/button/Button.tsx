@@ -16,7 +16,7 @@ interface ButtonProps extends AriaButtonProps {
     className?: string;
 }
 
-const Button = ({ disabled, className, children, size = "medium", appearance = "primary" } : ButtonProps) => {
+export const Button = ({ disabled, className, children, size = "medium", appearance = "primary" } : ButtonProps) => {
     const classes = cx(
         "hop-btn",
         styles["hop-btn"],
@@ -34,5 +34,3 @@ const Button = ({ disabled, className, children, size = "medium", appearance = "
         </AriaButton>
     );
 };
-
-export default Button;

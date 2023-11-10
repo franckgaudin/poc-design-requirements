@@ -1,4 +1,4 @@
-import Avatar from "./Avatar.tsx";
+import {Avatar} from "./Avatar.tsx";
 import type { StoryObj } from "@storybook/react";
 
 export default {

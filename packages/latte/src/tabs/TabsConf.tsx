@@ -20,7 +20,7 @@ interface TabsProps extends AriaTabsProps {
     type?: "standard" |"card" | "heading";
 }
 
-const TabsConf = ({ tabs, type }: TabsProps) => {
+export const TabsConf = ({ tabs, type }: TabsProps) => {
     const listClasses = cx(
         styles["hop-tabs__list"],
         {
@@ -46,5 +46,3 @@ const TabsConf = ({ tabs, type }: TabsProps) => {
         </AriaTabs>
     );
 };
-
-export default TabsConf;
