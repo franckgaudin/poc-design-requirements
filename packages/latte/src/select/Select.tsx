@@ -1,28 +1,32 @@
 import { Button, SelectValue, Select as AriaSelect } from "react-aria-components";
+import type { SelectProps as AriaSelectProps, ListBoxItemProps } from "react-aria-components";
 
 import { List } from "../list/List.tsx";
 
-const SelectTrigger = ({ children }: React.PropsWithChildren) => {
+interface SelectProps<T extends object>
+    extends Omit<AriaSelectProps<T>, "children"> {
+    placeholder?: string;
+    items?: Iterable<T>;
+    children: React.ReactNode;
+}
+
+const SelectRoot = <T extends object>({ placeholder, items, children, ...props }:
+SelectProps<T>) => {
     return (
-        <Button>
-            <SelectValue>{children}</SelectValue>
-            <span aria-hidden="true">▼</span>
-        </Button>
+        <AriaSelect placeholder={placeholder} {...props}>
+            <Button>
+                <SelectValue />
+                <span aria-hidden="true">▼</span>
+            </Button>
+            <List items={items}>
+                {children}
+            </List>
+        </AriaSelect>
     );
 };
 
-const SelectOption = ({ ...props }) => {
-    return <List {...props} />;
-};
-
-const SelectItem = ({ ...props }) => {
+const SelectItem = (props: ListBoxItemProps) => {
     return <List.Item {...props} />;
 };
 
-export const SelectRoot = ({ ...props }) => {
-    return (
-        <AriaSelect {...props} />
-    );
-};
-
-export const Select = Object.assign(SelectRoot, { Trigger: SelectTrigger, Option: SelectOption, Item: SelectItem });
+export const Select = Object.assign(SelectRoot, { Item: SelectItem });

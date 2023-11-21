@@ -7,7 +7,7 @@ const ListItem = ({ ...props }: ListBoxItemProps) => {
     );
 };
 
-const ListRoot = ({ ...props }: ListBoxProps<{ className: string }>) => {
+const ListRoot = ({ ...props }: ListBoxProps<{ className?: string }>) => {
     return (
         <AriaListBox {...props} />
     );
