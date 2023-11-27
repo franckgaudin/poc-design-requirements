@@ -1,14 +1,9 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-    dts: true,
-    clean: true,
+    entry: ["./src/*.(ts|tsx)"],
+    format: ["esm"],
     minify: true,
     splitting: false,
-    treeshake: true,
-    entry: ["./src", "!src/**/*.stories.*"],
-    outDir: "./dist",
-    format: ["esm"],
-    target: "esnext",
-    platform: "browser"
+    clean: true
 });
