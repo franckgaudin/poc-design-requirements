@@ -9,7 +9,7 @@ export type Appearance =
     | "primary"
     | "secondary";
 
-interface ButtonProps<T extends React.ElementType> extends AriaButtonProps {
+interface ButtonProps<T extends React.ElementType = "button"> extends AriaButtonProps {
     appearance?: Appearance;
     size?: Size;
     disabled?: boolean;
@@ -17,7 +17,9 @@ interface ButtonProps<T extends React.ElementType> extends AriaButtonProps {
     as?: T;
 }
 
-export const Button = <T extends React.ElementType = "button">({ disabled, className, children, size = "medium", appearance = "primary", as, ...rest } : ButtonProps<T> & Omit<React.ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>) => {
+export const Button = <T extends React.ElementType = "button">(
+    { disabled, className, children, size = "medium", appearance = "primary", as, ...rest }: ButtonProps<T> & Omit<React.ComponentPropsWithRef<T>, keyof ButtonProps<T>>
+) => {
     const classes = cx(
         "hop-btn",
         styles["hop-btn"],
@@ -37,3 +39,5 @@ export const Button = <T extends React.ElementType = "button">({ disabled, class
         </Component>
     );
 };
+
+Button.displayName = "Button";
