@@ -30,6 +30,10 @@
     --hop-button--disabled-color: var(--hop-neutral-text-disabled);
     --hop-button--disabled-background-color: var(--hop-neutral-surface-disabled);
     --hop-button--disabled-border-color: transparent;
+
+    /* Link */
+    --hop-button--link-color: var(--hop-primary-text);
+    --hop-button--link-color-hover: var(--hop-primary-text-hover);
 }
 
 .hop-btn {
@@ -96,4 +100,18 @@
 .hop-btn--disabled:focus,
 .hop-btn--disabled:focus-visible {
     box-shadow: none;
+}
+
+.hop-btn--link,
+.hop-btn--link:hover {
+    background: transparent;
+    text-decoration: none;
+}
+
+.hop-btn--link {
+    color: var(--hop-button--link-color);
+}
+
+.hop-btn--link:hover {
+    color: var(--hop-button--link-color-hover);
 }
