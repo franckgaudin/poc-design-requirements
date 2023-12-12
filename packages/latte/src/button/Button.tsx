@@ -1,5 +1,5 @@
 import React from "react";
-import { Button as AriaButton, type ButtonProps as AriaButtonProps } from "react-aria-components";
+import { Button as AriaButton, type ButtonProps as AriaButtonProps, Provider } from "react-aria-components";
 import cx from "classnames";
 import { IconContext } from "@hopper-ui/icons";
 import { LabelContext } from "../label/Label";
@@ -38,39 +38,27 @@ export const Button = <T extends React.ElementType = "button">(
     const Component = as ?? AriaButton;
 
     return (
-        <LabelContext.Provider value={{
-            className: "hop-btn__label",
-            slots: {
-                "_": {
-                    className: "hop-btn__label--default"
+        <Provider values={[
+            [LabelContext, {
+                className: "hop-btn__label",
+                slots: {
+                    "default": {
+                        className: "hop-btn__label--default"
+                    },
+                    "end": {
+                        className: "hop-btn__label--end"
+                    }
                 },
-                "end": {
-                    className: "hop-btn__label--end"
-                }
-            },
-        }}>
-            <IconContext.Provider value={
-                {
-                    className: "hop-btn__icon",
-                    size: "sm",
-                    // slots: {
-                    //     defaultSlot: {
-                    //         className: "hop-btn__icon--default",
-                    //         size: "sm"
-                    //     },
-                    //     "icon-end": {
-                    //         className: "hop-btn__icon--end",
-                    //         size: "lg"
-                    //     }
-                    // }
-                }
-            }
-            >
-                <Component className={classes} {...rest} >
-                    {children}
-                </Component>
-            </IconContext.Provider>
-        </LabelContext.Provider>
+            }],
+            [IconContext, {
+                className: "hop-btn__icon",
+                size: "sm",
+            }]
+        ]}>
+            <Component className={classes} {...rest} >
+                {children}
+            </Component>
+        </Provider>
     );
 };
 

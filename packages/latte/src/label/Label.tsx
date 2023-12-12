@@ -9,7 +9,8 @@ export const LabelContext = createContext<ContextValue<LabelProps, HTMLLabelElem
 
 export const Label = (props: LabelProps) => {
 
-    const propsWithDefaultsSlot ={...props, slot: "_"};
+    const propsWithDefaultsSlot ={...props, slot: "default"};
+    // @ts-ignore
     [props] = useContextProps(propsWithDefaultsSlot, null, LabelContext);
 
     return (
